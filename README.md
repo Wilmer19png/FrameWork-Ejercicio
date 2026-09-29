@@ -34,6 +34,8 @@ Milligram no incluye barra de navegación, tarjetas, modales ni componentes con 
 | Paisaje en capas con parallax | SVG, CSS y JS propios |
 | Símbolos rupestres | SVG propios |
 | Paleta, tipografías y textura | CSS propio (sobrescribe el morado por defecto de Milligram) |
+| Grid de cuatro columnas de servicios (`.column-25`) | Milligram |
+| Tarjetas de servicio y glifos rupestres | CSS y SVG propios |
 
 ## Identidad visual
 
@@ -79,7 +81,7 @@ No requiere instalación ni backend. Abre `index.html` en el navegador o usa una
 - [x] Identidad visual
 - [x] Header con menú responsive
 - [x] Hero con parallax
-- [ ] Servicios con tarjetas
+- [x] Servicios con tarjetas
 - [ ] Experiencia: mapa y galería
 - [ ] Formulario de reserva
 - [ ] Footer

@@ -325,3 +325,83 @@ html {
 .acento-ocre  { stroke: var(--ocre); }
 .acento-rojo  { stroke: var(--rojo-oxido); }
 .acento-musgo { stroke: var(--musgo); }
+
+/* ===== Servicios ===== */
+.servicios {
+  padding: 9rem 0 10rem;
+}
+
+.servicios-encabezado {
+  max-width: 64rem;
+  margin: 0 auto 5rem;
+  text-align: center;
+}
+.servicios-encabezado h2 {
+  font-size: clamp(2.8rem, 4.5vw, 4rem);
+}
+.divisor {
+  display: block;
+  width: 12rem;
+  margin: 1.6rem auto;
+  fill: none;
+  stroke: var(--ocre);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.servicios-encabezado p {
+  font-size: 1.8rem;
+}
+
+/* Columnas del grid a igual altura */
+.row-servicios {
+  flex-wrap: wrap;
+}
+.row-servicios .column {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+/* Tarjeta de servicio */
+.servicio-card {
+  width: 100%;
+  padding: 3rem 2.4rem;
+  background-color: #FBF5EA;
+  border: .2rem solid var(--carbon);
+  border-radius: 1.2rem;
+  box-shadow: .6rem .6rem 0 var(--ocre);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.servicio-card:hover {
+  transform: translate(-.3rem, -.3rem);
+  box-shadow: 1rem 1rem 0 var(--rojo-oxido);
+}
+.servicio-card h3 {
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+.servicio-card p {
+  margin-bottom: 0;
+  font-size: 1.6rem;
+}
+
+/* Glifo de cada servicio */
+.glifo {
+  display: block;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin-bottom: 2rem;
+  fill: none;
+  stroke: var(--rojo-oxido);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Tablet: dos por fila en lugar de cuatro apretadas */
+@media (min-width: 40rem) and (max-width: 900px) {
+  .row-servicios .column.column-25 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
