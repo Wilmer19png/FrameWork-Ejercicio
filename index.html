@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
   <!-- Estilos propios (siempre al final) -->
   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <!-- Leaflet (mapa) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -99,6 +103,29 @@
       </div>
     </div>
   </section>
+    <section class="experiencia" id="experiencia">
+    <div class="container">
+
+      <div class="servicios-encabezado experiencia-encabezado">
+        <h2>Un lugar, muchos rincones</h2>
+        <svg class="divisor" viewBox="0 0 120 16" aria-hidden="true">
+          <path d="M0 8l10-6l10 6l10-6l10 6l10-6l10 6l10-6l10 6l10-6l10 6l10-6l10 6"/>
+        </svg>
+        <p>Recorre el mapa y descubre qué puedes hacer en cada rincón de Casa Nativa.</p>
+      </div>
+
+      <div class="row row-experiencia">
+        <div class="column column-60">
+          <div id="mapa" class="mapa" role="region" aria-label="Mapa de los lugares de Casa Nativa"></div>
+        </div>
+        <div class="column column-40">
+          <div id="lista-lugares" class="lista-lugares" role="group" aria-label="Lugares de Casa Nativa"></div>
+          <article id="lugar-panel" class="lugar-panel" aria-live="polite"></article>
+        </div>
+      </div>
+
+    </div>
+  </section>
     <section class="servicios" id="servicios">
     <div class="container">
 
@@ -155,7 +182,9 @@
       </div>
     </div>
   </section>
-
+  <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
   <script src="js/main.js"></script>
 </body>

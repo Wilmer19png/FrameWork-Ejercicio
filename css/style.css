@@ -405,3 +405,154 @@ html {
     max-width: 50%;
   }
 }
+/* ===== Experiencia ===== */
+.experiencia {
+  padding: 9rem 0 8rem;
+  background-color: rgba(230, 213, 186, .7);
+}
+.row-experiencia {
+  align-items: flex-start;
+}
+
+/* Mapa */
+.mapa {
+  position: relative;
+  z-index: 0;              /* mantiene los controles del mapa debajo del header */
+  height: 56rem;
+  margin-bottom: 2.4rem;
+  border: .2rem solid var(--carbon);
+  border-radius: 1.2rem;
+  box-shadow: .6rem .6rem 0 var(--ocre);
+  overflow: hidden;
+}
+.mapa .leaflet-tile-pane {
+  filter: sepia(.35) saturate(.8) contrast(.95);   /* tono cálido acorde a la paleta */
+}
+
+/* Marcadores (la transformación va en la cara interior, no en el ícono de Leaflet) */
+.marcador-cara {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  background-color: var(--hueso);
+  border: .25rem solid var(--carbon);
+  border-radius: 50%;
+  box-shadow: .3rem .3rem 0 var(--ocre);
+  transition: transform .2s ease, background-color .2s ease;
+}
+.marcador-cara svg {
+  width: 2.6rem;
+  height: 2.6rem;
+  fill: none;
+  stroke: var(--rojo-oxido);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.marcador:hover .marcador-cara {
+  transform: scale(1.1);
+}
+.marcador.activo .marcador-cara {
+  background-color: var(--rojo-oxido);
+  transform: scale(1.2);
+}
+.marcador.activo svg {
+  stroke: var(--hueso);
+}
+
+/* Chips de lugares (reinician el estilo de botón de Milligram) */
+.lista-lugares {
+  margin-bottom: 1.6rem;
+}
+.lugar-chip {
+  height: auto;
+  margin: 0 .6rem .8rem 0;
+  padding: .6rem 1.4rem;
+  color: var(--carbon);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  background-color: transparent;
+  border: .2rem solid var(--carbon);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.lugar-chip:hover,
+.lugar-chip:focus {
+  color: var(--carbon);
+  background-color: var(--arena);
+  border-color: var(--carbon);
+}
+.lugar-chip.activo,
+.lugar-chip.activo:hover,
+.lugar-chip.activo:focus {
+  color: var(--hueso);
+  background-color: var(--rojo-oxido);
+  border-color: var(--rojo-oxido);
+}
+
+/* Panel del lugar */
+.lugar-panel {
+  padding: 2rem;
+  background-color: #FBF5EA;
+  border: .2rem solid var(--carbon);
+  border-radius: 1.2rem;
+  box-shadow: .6rem .6rem 0 var(--ocre);
+}
+.lugar-foto {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 1.6rem;
+  overflow: hidden;
+  background-color: var(--arena);
+  border-radius: .8rem;
+}
+.lugar-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lugar-foto.sin-foto img {
+  display: none;
+}
+.lugar-panel h3 {
+  margin-bottom: .8rem;
+  font-size: 2.4rem;
+}
+.lugar-panel h4 {
+  margin-bottom: .8rem;
+  color: var(--rojo-oxido);
+  font-family: var(--fuente-texto);
+  font-size: 1.4rem;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+.lugar-actividades {
+  margin-bottom: 0;
+  list-style: none;
+}
+.lugar-actividades li {
+  position: relative;
+  margin-bottom: .6rem;
+  padding-left: 2rem;
+}
+.lugar-actividades li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .9rem;
+  width: .8rem;
+  height: .8rem;
+  background-color: var(--ocre);
+  border-radius: 50%;
+}
+
+@media (max-width: 40rem) {
+  .mapa {
+    height: 38rem;
+  }
+}

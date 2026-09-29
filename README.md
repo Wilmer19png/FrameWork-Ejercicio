@@ -36,6 +36,8 @@ Milligram no incluye barra de navegación, tarjetas, modales ni componentes con 
 | Paleta, tipografías y textura | CSS propio (sobrescribe el morado por defecto de Milligram) |
 | Grid de cuatro columnas de servicios (`.column-25`) | Milligram |
 | Tarjetas de servicio y glifos rupestres | CSS y SVG propios |
+| Distribución mapa / panel (`.column-60` y `.column-40`) | Milligram |
+| Mapa, marcadores y panel de lugares | Leaflet + JS y CSS propios |
 
 ## Identidad visual
 
@@ -55,6 +57,14 @@ Concepto: **petroglifo minimalista**. Líneas simples como grabadas en piedra, c
 ## Animaciones
 
 Se usa **Anime.js v4** (por CDN) como motor de animación. Las animaciones en el menú y en los servicios se documentarán al integrarlas.
+
+## Librerías externas
+
+- **Anime.js v4** (jsDelivr): motor de animación.
+- **Leaflet 1.9.4** (cdnjs) con mosaicos de **OpenStreetMap**: mapa interactivo de la sección Experiencia. El mapa incluye la atribución requerida por OpenStreetMap.
+- **Google Fonts:** Fraunces y Nunito.
+
+Los lugares del mapa, sus coordenadas y sus descripciones son **ficticios** (proyecto demo).
 
 ## Estructura del proyecto
 
@@ -82,7 +92,7 @@ No requiere instalación ni backend. Abre `index.html` en el navegador o usa una
 - [x] Header con menú responsive
 - [x] Hero con parallax
 - [x] Servicios con tarjetas
-- [ ] Experiencia: mapa y galería
+- [x] Experiencia: mapa y galería
 - [ ] Formulario de reserva
 - [ ] Footer
 - [ ] Animaciones con Anime.js en menú y servicios
