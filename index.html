@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-   <!-- Fuentes de la identidad -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Nativa</title>
+
+  <!-- Fuentes de la identidad -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Nunito:wght@300;400;600;700&display=swap">
@@ -9,22 +13,43 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <!-- Milligram -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
-  <!-- Estilos propios (siempre al final) -->
+  <!-- Estilos propios -->
   <link rel="stylesheet" href="css/style.css">
-</body>
-<main class="container">
-  <h1>Casa Nativa</h1>
-  <p>Respira naturaleza. Descansa como en casa. <a href="#">Enlace de prueba</a></p>
-  <a class="button" href="#">Reservar ahora</a>
-  <a class="button button-outline" href="#">Conocer la experiencia</a>
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
-<script src="js/main.js"></script>
-</body>
 </head>
-
 <body>
-    
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo" aria-label="Casa Nativa, ir al inicio">
+        <svg class="logo-glifo" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="8"/>
+          <path d="M37 24h6 M33.2 33.2l4.2 4.2 M24 37v6 M14.8 33.2l-4.2 4.2 M11 24H5 M14.8 14.8l-4.2-4.2 M24 11V5 M33.2 14.8l4.2-4.2"/>
+        </svg>
+        <span class="logo-texto">Casa Nativa</span>
+      </a>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu-principal" aria-label="Principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#experiencia">Experiencia</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#reserva">Reserva</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a class="button menu-cta" href="#reserva">Reservar ahora</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
+<main id="inicio" class="container" style="padding-top: 12rem; min-height: 200vh;">
+  <p>Contenido temporal para probar el scroll.</p>
+</main>
 </html>
