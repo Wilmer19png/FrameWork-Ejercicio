@@ -253,3 +253,75 @@ html {
     text-align: center;
   }
 }
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: 12rem 0 16rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, transparent 0%, rgba(230, 213, 186, .85) 100%);
+}
+
+/* Capas del paisaje */
+.capa {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+  will-change: transform;
+}
+.capa svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.capa-montanas { height: 55vh; z-index: 1; }
+.capa-colinas  { height: 40vh; z-index: 2; }
+.capa-frente   { height: 22vh; z-index: 3; }
+
+/* Contenido por encima de las capas */
+.hero-contenido {
+  position: relative;
+  z-index: 5;
+}
+.hero-etiqueta {
+  display: inline-block;
+  margin-bottom: 1.6rem;
+  padding: .4rem 1.4rem;
+  color: var(--rojo-oxido);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: .12rem;
+  text-transform: uppercase;
+  border: .2rem solid var(--rojo-oxido);
+  border-radius: 999px;
+}
+.hero-texto h1 {
+  font-size: clamp(3.4rem, 6vw, 6rem);
+  line-height: 1.1;
+}
+.hero-texto p {
+  max-width: 52rem;
+  font-size: 1.9rem;
+}
+.hero-texto .button {
+  margin-right: 1rem;
+}
+
+/* Símbolos rupestres */
+.hero-glifos {
+  display: block;
+  width: 100%;
+  max-height: 42rem;
+  fill: none;
+  stroke: var(--carbon);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.acento-ocre  { stroke: var(--ocre); }
+.acento-rojo  { stroke: var(--rojo-oxido); }
+.acento-musgo { stroke: var(--musgo); }

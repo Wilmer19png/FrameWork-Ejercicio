@@ -33,3 +33,24 @@ function actualizarHeader() {
 }
 window.addEventListener('scroll', actualizarHeader, { passive: true });
 actualizarHeader();
+// ===== Hero: parallax =====
+const capasParallax = document.querySelectorAll('[data-velocidad]');
+const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)');
+let esperandoFrame = false;
+
+function moverCapas() {
+  const y = window.scrollY;
+  capasParallax.forEach((capa) => {
+    const velocidad = parseFloat(capa.dataset.velocidad);
+    capa.style.transform = `translate3d(0, ${y * velocidad}px, 0)`;
+  });
+  esperandoFrame = false;
+}
+
+function alHacerScroll() {
+  if (sinMovimiento.matches || esperandoFrame) return;
+  esperandoFrame = true;
+  requestAnimationFrame(moverCapas);
+}
+
+window.addEventListener('scroll', alHacerScroll, { passive: true });

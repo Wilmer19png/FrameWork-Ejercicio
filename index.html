@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <!-- Milligram -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
-  <!-- Estilos propios -->
+  <!-- Estilos propios (siempre al final) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -45,6 +45,60 @@
     </div>
   </header>
 
+  <section class="hero" id="inicio">
+
+    <!-- Capas de paisaje (parallax) -->
+    <div class="capa capa-montanas" data-velocidad="0.45" aria-hidden="true">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+        <path d="M0 400V250L170 130L300 220L520 80L720 230L910 120L1120 240L1300 150L1440 220V400Z" fill="#C98A2B" fill-opacity=".35"/>
+      </svg>
+    </div>
+    <div class="capa capa-colinas" data-velocidad="0.25" aria-hidden="true">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+        <path d="M0 400V290C200 230 380 330 600 280C820 230 1000 320 1200 270C1320 245 1400 260 1440 255V400Z" fill="#5F6B3A" fill-opacity=".45"/>
+      </svg>
+    </div>
+    <div class="capa capa-frente" aria-hidden="true">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none">
+        <path d="M0 400V330C240 290 480 360 760 325C1020 295 1240 340 1440 310V400Z" fill="#F3E9D8"/>
+      </svg>
+    </div>
+
+    <!-- Contenido con el grid de Milligram -->
+    <div class="container hero-contenido">
+      <div class="row">
+        <div class="column column-60 hero-texto">
+          <span class="hero-etiqueta">Escápate de la rutina</span>
+          <h1>Respira naturaleza. Descansa como en casa.</h1>
+          <p>Casa Nativa es un refugio rural pensado para desconectarte del ruido, disfrutar el paisaje y vivir una experiencia tranquila a pocos minutos de la ciudad.</p>
+          <a class="button" href="#reserva">Consultar disponibilidad</a>
+          <a class="button button-outline" href="#experiencia">Conocer la experiencia</a>
+        </div>
+
+        <div class="column column-40 hero-visual" data-velocidad="0.12">
+          <svg class="hero-glifos" viewBox="0 0 480 400" role="img" aria-label="Símbolos rupestres: sol, espiral, ciervo y mano">
+            <!-- Sol -->
+            <g class="acento-ocre" transform="translate(340 100)">
+              <circle r="28"/>
+              <path d="M44 0h22 M31 31l16 16 M0 44v22 M-31 31l-16 16 M-44 0h-22 M-31 -31l-16 -16 M0 -44v-22 M31 -31l16 -16"/>
+            </g>
+            <!-- Espiral -->
+            <path class="acento-musgo" transform="translate(110 40)" d="M50 50a4 4 0 0 1 8 0a10 10 0 0 1 -20 0a16 16 0 0 1 32 0a22 22 0 0 1 -44 0"/>
+            <!-- Ciervo -->
+            <g transform="translate(40 200) scale(1.6)" stroke-width="2.5">
+              <path d="M25 55H85 M30 55V80 M40 55V80 M75 55V80 M85 55V80 M85 55L100 35 M100 35L112 32 M104 34L102 20 M104 34L112 22 M102 20L98 14 M102 28L96 26"/>
+            </g>
+            <!-- Mano -->
+            <g class="acento-rojo" transform="translate(290 190) scale(1.3)" stroke-width="3">
+              <path d="M28 60V38 M40 60V22 M52 60V16 M64 60V24 M76 60V42 M22 60H82V82Q82 96 52 96Q22 96 22 82Z M22 72L8 56"/>
+            </g>
+            <!-- Zigzag (agua) -->
+            <path class="acento-ocre" transform="translate(40 360)" d="M0 0l16 -14l16 14l16 -14l16 14l16 -14l16 14l16 -14l16 14"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
   <script src="js/main.js"></script>
