@@ -105,6 +105,7 @@
   </section>
     <section class="experiencia" id="experiencia">
     <div class="container">
+      
 
       <div class="servicios-encabezado experiencia-encabezado">
         <h2>Un lugar, muchos rincones</h2>
@@ -125,6 +126,11 @@
       </div>
 
     </div>
+          <div class="galeria-bloque">
+        <h3>Galería</h3>
+        <div id="filtros-galeria" class="filtros-galeria" role="group" aria-label="Filtrar fotos por categoría"></div>
+        <div id="galeria" class="galeria"></div>
+      </div>
   </section>
     <section class="servicios" id="servicios">
     <div class="container">
@@ -182,13 +188,21 @@
       </div>
     </div>
   </section>
+    <dialog id="visor" class="visor" aria-label="Foto ampliada">
+    <button class="visor-boton visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
+    <button class="visor-boton visor-prev" type="button" aria-label="Foto anterior">&#8249;</button>
+    <figure class="visor-figura">
+      <img id="visor-img" src="" alt="">
+      <figcaption id="visor-texto"></figcaption>
+    </figure>
+    <button class="visor-boton visor-next" type="button" aria-label="Foto siguiente">&#8250;</button>
+  </dialog>
   <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
   <script src="js/main.js"></script>
 </body>
-<main id="inicio" class="container" style="padding-top: 12rem; min-height: 200vh;">
-  <p>Contenido temporal para probar el scroll.</p>
+
 </main>
 </html>

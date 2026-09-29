@@ -38,6 +38,8 @@ Milligram no incluye barra de navegación, tarjetas, modales ni componentes con 
 | Tarjetas de servicio y glifos rupestres | CSS y SVG propios |
 | Distribución mapa / panel (`.column-60` y `.column-40`) | Milligram |
 | Mapa, marcadores y panel de lugares | Leaflet + JS y CSS propios |
+| Cuadrícula de la galería | CSS Grid propio (Milligram no la cubre) |
+| Filtros por categoría y visor ampliado | JS propio con el elemento `<dialog>` |
 
 ## Identidad visual
 
@@ -57,6 +59,7 @@ Concepto: **petroglifo minimalista**. Líneas simples como grabadas en piedra, c
 ## Animaciones
 
 Se usa **Anime.js v4** (por CDN) como motor de animación. Las animaciones en el menú y en los servicios se documentarán al integrarlas.
+Anime.js también se usa en la transición del panel de lugares, en la entrada escalonada de la galería al filtrar y en el visor de fotos.
 
 ## Librerías externas
 

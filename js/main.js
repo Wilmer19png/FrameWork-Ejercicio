@@ -201,3 +201,117 @@ if (contenedorMapa && typeof L !== 'undefined') {
   mapa.fitBounds(L.latLngBounds(lugares.map((l) => l.coords)), { padding: [50, 50] });
   seleccionarLugar('casa');
 }
+// ===== Experiencia: galería y visor =====
+const fotos = [
+  { archivo: 'galeria-01.jpg', titulo: 'Habitación con vista al valle', categoria: 'Alojamiento' },
+  { archivo: 'galeria-02.jpg', titulo: 'Corredor con hamacas', categoria: 'Alojamiento' },
+  { archivo: 'galeria-03.jpg', titulo: 'Desayuno con productos locales', categoria: 'Alojamiento' },
+  { archivo: 'galeria-04.jpg', titulo: 'Amanecer en el mirador', categoria: 'Naturaleza' },
+  { archivo: 'galeria-05.jpg', titulo: 'Guadual y helechos', categoria: 'Naturaleza' },
+  { archivo: 'galeria-06.jpg', titulo: 'La poza en la quebrada', categoria: 'Naturaleza' },
+  { archivo: 'galeria-07.jpg', titulo: 'Caminata por el sendero', categoria: 'Actividades' },
+  { archivo: 'galeria-08.jpg', titulo: 'Café en el jardín', categoria: 'Actividades' },
+  { archivo: 'galeria-09.jpg', titulo: 'Picnic bajo los árboles', categoria: 'Actividades' }
+];
+const CATEGORIAS = ['Todas', 'Alojamiento', 'Naturaleza', 'Actividades'];
+
+const galeria = document.querySelector('#galeria');
+const filtrosGaleria = document.querySelector('#filtros-galeria');
+const visor = document.querySelector('#visor');
+
+if (galeria && filtrosGaleria && visor) {
+  const visorImg = visor.querySelector('#visor-img');
+  const visorTexto = visor.querySelector('#visor-texto');
+  const visorFigura = visor.querySelector('.visor-figura');
+  let itemActual = null;
+
+  const itemsVisibles = () => [...galeria.querySelectorAll('.galeria-item:not([hidden])')];
+
+  // --- Visor ---
+  function mostrarFoto(item) {
+    const foto = fotos[item.dataset.indice];
+    visorFigura.classList.remove('sin-foto');
+    visorImg.src = `assets/img/galeria/${foto.archivo}`;
+    visorImg.alt = foto.titulo;
+    visorTexto.textContent = `${foto.titulo} · ${foto.categoria}`;
+    if (!sinMovimiento.matches) {
+      animate(visorImg, { opacity: [0, 1], scale: [0.96, 1], duration: 350, ease: 'outQuad' });
+    }
+  }
+
+  function abrirVisor(item) {
+    itemActual = item;
+    mostrarFoto(item);
+    if (!visor.open) visor.showModal();
+  }
+
+  function moverVisor(paso) {
+    const lista = itemsVisibles();
+    const posicion = lista.indexOf(itemActual);
+    itemActual = lista[(posicion + paso + lista.length) % lista.length];
+    mostrarFoto(itemActual);
+  }
+
+  visorImg.addEventListener('error', () => visorFigura.classList.add('sin-foto'));
+  visor.querySelector('.visor-cerrar').addEventListener('click', () => visor.close());
+  visor.querySelector('.visor-prev').addEventListener('click', () => moverVisor(-1));
+  visor.querySelector('.visor-next').addEventListener('click', () => moverVisor(1));
+  visor.addEventListener('click', (e) => {
+    if (e.target === visor) visor.close();       // clic en el fondo oscuro
+  });
+  visor.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') moverVisor(-1);
+    if (e.key === 'ArrowRight') moverVisor(1);
+  });
+
+  // --- Filtros ---
+  function filtrar(categoria, animar = true) {
+    filtrosGaleria.querySelectorAll('.lugar-chip').forEach((chip) => {
+      const activo = chip.dataset.categoria === categoria;
+      chip.classList.toggle('activo', activo);
+      chip.setAttribute('aria-pressed', String(activo));
+    });
+
+    galeria.querySelectorAll('.galeria-item').forEach((item) => {
+      item.hidden = !(categoria === 'Todas' || item.dataset.categoria === categoria);
+    });
+
+    if (animar && !sinMovimiento.matches) {
+      animate(itemsVisibles(), {
+        opacity: [0, 1],
+        y: [18, 0],
+        delay: stagger(70),
+        duration: 500,
+        ease: 'outQuad'
+      });
+    }
+  }
+
+  // --- Construcción ---
+  CATEGORIAS.forEach((categoria) => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'lugar-chip';          // reutiliza el estilo de los chips del mapa
+    chip.dataset.categoria = categoria;
+    chip.textContent = categoria;
+    chip.addEventListener('click', () => filtrar(categoria));
+    filtrosGaleria.appendChild(chip);
+  });
+
+  fotos.forEach((foto, indice) => {
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'galeria-item';
+    item.dataset.indice = indice;
+    item.dataset.categoria = foto.categoria;
+    item.setAttribute('aria-label', `Ampliar foto: ${foto.titulo}`);
+    item.innerHTML = `
+      <img src="assets/img/galeria/${foto.archivo}" alt="" loading="lazy">
+      <span class="galeria-etiqueta">${foto.titulo}</span>`;
+    item.querySelector('img').addEventListener('error', () => item.classList.add('sin-foto'));
+    item.addEventListener('click', () => abrirVisor(item));
+    galeria.appendChild(item);
+  });
+
+  filtrar('Todas', false);
+}
