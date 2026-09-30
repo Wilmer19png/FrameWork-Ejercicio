@@ -792,3 +792,84 @@ textarea:focus {
     width: 100%;
   }
 }
+/* ===== Footer ===== */
+.site-footer {
+  position: relative;
+  padding: 7rem 0 2.4rem;
+  color: var(--hueso);
+  background-color: var(--carbon);
+}
+
+/* Franja en zigzag sobre el footer */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M0 14L14 0L28 14Z' fill='%232B211B'/%3E%3C/svg%3E") repeat-x;
+}
+
+.site-footer .column {
+  margin-bottom: 2.4rem;
+}
+
+.footer-marca {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  color: var(--hueso);
+  font-family: var(--fuente-titulo);
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+.footer-glifo {
+  width: 4rem;
+  height: 4rem;
+  fill: none;
+  stroke: var(--ocre);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.footer-lema {
+  max-width: 32rem;
+  font-size: 1.6rem;
+}
+
+.site-footer h4 {
+  margin-bottom: .8rem;
+  color: var(--ocre);
+  font-family: var(--fuente-texto);
+  font-size: 1.3rem;
+  letter-spacing: .12rem;
+  text-transform: uppercase;
+}
+.site-footer p {
+  margin-bottom: 2rem;
+}
+.site-footer a {
+  color: var(--hueso);
+}
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--ocre);
+}
+
+.footer-enlaces {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer-enlaces li {
+  margin-bottom: .8rem;
+}
+
+.site-footer .footer-final {
+  margin: 3rem 0 0;
+  padding-top: 2rem;
+  font-size: 1.3rem;
+  text-align: center;
+  border-top: .1rem solid rgba(243, 233, 216, .25);
+}

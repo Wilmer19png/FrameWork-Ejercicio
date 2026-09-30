@@ -43,6 +43,8 @@ Milligram no incluye barra de navegación, tarjetas, modales ni componentes con 
 | Distribución del formulario (`.row` y `.column-50`) | Milligram |
 | Campos del formulario (`label`, `input`, `textarea`) y botón | Milligram (colores personalizados) |
 | Validación en español y fechas coherentes | JS propio |
+| Distribución del footer (`.column-40`, `.column-33`, `.column-25`) | Milligram |
+| Estilo oscuro del footer y franja en zigzag | CSS propio |
 
 ## Identidad visual
 
@@ -101,7 +103,7 @@ No requiere instalación ni backend. Abre `index.html` en el navegador o usa una
 - [x] Servicios con tarjetas
 - [x] Experiencia: mapa y galería
 - [x] Formulario de reserva
-- [ ] Footer
+- [x] Footer
 - [ ] Animaciones con Anime.js en menú y servicios
 - [ ] Ajustes de responsive y accesibilidad
 
