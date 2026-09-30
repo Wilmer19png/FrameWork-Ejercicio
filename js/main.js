@@ -1,5 +1,5 @@
 
-const { animate, stagger } = anime;
+const { animate, stagger, svg } = anime;
 
 // ===== Header: menú móvil y estado al hacer scroll =====
 const header = document.querySelector('.site-header');
@@ -10,6 +10,7 @@ function abrirCerrarMenu(abrir) {
   menu.classList.toggle('abierto', abrir);
   botonMenu.setAttribute('aria-expanded', String(abrir));
   botonMenu.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Abrir menú');
+  if (abrir) animarEntradaMenuMovil();
 }
 
 botonMenu.addEventListener('click', () => {
@@ -419,4 +420,107 @@ if (formReserva) {
       animate(mensajeExito, { opacity: [0, 1], y: [16, 0], duration: 500, ease: 'outQuad' });
     }
   });
+}
+// ===== Anime.js: menú y servicios =====
+
+// --- Menú móvil: los enlaces entran escalonados al abrirlo ---
+function animarEntradaMenuMovil() {
+  if (sinMovimiento.matches) return;
+  const items = menu.querySelectorAll('li, .menu-cta');
+  items.forEach((el) => { el.style.opacity = '0'; });   // evita parpadeo durante el retraso
+  animate(items, {
+    opacity: [0, 1],
+    x: [-24, 0],
+    delay: (el, i) => 120 + i * 70,
+    duration: 500,
+    ease: 'outQuad'
+  });
+}
+
+// --- Menú: entrada al cargar la página ---
+if (!sinMovimiento.matches) {
+  // El sol del logo se dibuja trazo a trazo
+  const trazosLogo = svg.createDrawable('.logo-glifo path');
+  trazosLogo.forEach((trazo) => { trazo.draw = '0 0'; });
+  animate(trazosLogo, {
+    draw: ['0 0', '0 1'],
+    delay: (el, i) => i * 250,
+    duration: 1400,
+    ease: 'inOutQuad'
+  });
+
+  animate('.logo-texto', {
+    opacity: [0, 1],
+    x: [-14, 0],
+    delay: 500,
+    duration: 700,
+    ease: 'outQuad'
+  });
+
+  animate('.menu li, .menu-cta', {
+    opacity: [0, 1],
+    y: [-16, 0],
+    delay: (el, i) => 600 + i * 90,
+    duration: 600,
+    ease: 'outQuad'
+  });
+}
+
+// --- Servicios: entrada al llegar a la sección + glifos que se dibujan ---
+const tarjetasServicios = document.querySelectorAll('.servicio-card');
+const columnasServicios = document.querySelectorAll('.row-servicios .column');
+const filaServicios = document.querySelector('.row-servicios');
+
+if (filaServicios && !sinMovimiento.matches) {
+  if (!('IntersectionObserver' in window)) {
+    // Navegador muy antiguo: se muestran sin animar
+    columnasServicios.forEach((columna) => { columna.style.opacity = '1'; });
+  } else {
+    const dibujosServicios = [...tarjetasServicios].map((tarjeta) =>
+      svg.createDrawable(tarjeta.querySelector('.glifo path'))
+    );
+    dibujosServicios.forEach((dibujo) => dibujo.forEach((trazo) => { trazo.draw = '0 0'; }));
+    let serviciosListos = false;
+
+    const observador = new IntersectionObserver((entradas, obs) => {
+      if (!entradas.some((entrada) => entrada.isIntersecting)) return;
+      obs.disconnect();
+
+      // Las tarjetas suben una tras otra
+      animate(columnasServicios, {
+        opacity: [0, 1],
+        y: [40, 0],
+        delay: stagger(140),
+        duration: 800,
+        ease: 'outExpo'
+      });
+
+      // Y después cada glifo se dibuja solo
+      dibujosServicios.forEach((dibujo, i) => {
+        animate(dibujo, {
+          draw: ['0 0', '0 1'],
+          delay: 350 + i * 140,
+          duration: 1200,
+          ease: 'inOutQuad',
+          onComplete: () => {
+            if (i === dibujosServicios.length - 1) serviciosListos = true;
+          }
+        });
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+
+    observador.observe(filaServicios);
+
+    // Microinteracción: el glifo se redibuja al pasar el cursor
+    tarjetasServicios.forEach((tarjeta, i) => {
+      tarjeta.addEventListener('mouseenter', () => {
+        if (!serviciosListos) return;
+        animate(dibujosServicios[i], {
+          draw: ['0 0', '0 1'],
+          duration: 700,
+          ease: 'inOutQuad'
+        });
+      });
+    });
+  }
 }

@@ -873,3 +873,11 @@ textarea:focus {
   text-align: center;
   border-top: .1rem solid rgba(243, 233, 216, .25);
 }
+
+/* ===== Animaciones (Anime.js) ===== */
+.anim .logo-texto,
+.anim .menu li,
+.anim .menu-cta,
+.anim .row-servicios .column {
+  opacity: 0;
+}

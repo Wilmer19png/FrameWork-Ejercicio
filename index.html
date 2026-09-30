@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casa Nativa</title>
 
+    <script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+    }
+  </script>
+  
+
   <!-- Fuentes de la identidad -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +32,10 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#inicio" class="logo" aria-label="Casa Nativa, ir al inicio">
-        <svg class="logo-glifo" viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="24" cy="24" r="8"/>
-          <path d="M37 24h6 M33.2 33.2l4.2 4.2 M24 37v6 M14.8 33.2l-4.2 4.2 M11 24H5 M14.8 14.8l-4.2-4.2 M24 11V5 M33.2 14.8l4.2-4.2"/>
-        </svg>
+     <svg class="logo-glifo" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M16 24a8 8 0 1 0 16 0a8 8 0 1 0 -16 0"/>
+        <path d="M37 24h6 M33.2 33.2l4.2 4.2 M24 37v6 M14.8 33.2l-4.2 4.2 M11 24H5 M14.8 14.8l-4.2-4.2 M24 11V5 M33.2 14.8l4.2-4.2"/>
+      </svg>
         <span class="logo-texto">Casa Nativa</span>
       </a>
 
@@ -308,7 +315,14 @@
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
   <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@4/dist/bundles/anime.umd.min.js"></script>
+  <script>
+    if (typeof anime === 'undefined') document.documentElement.classList.remove('anim');
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 
 </main>
 </html>

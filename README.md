@@ -45,6 +45,7 @@ Milligram no incluye barra de navegación, tarjetas, modales ni componentes con 
 | Validación en español y fechas coherentes | JS propio |
 | Distribución del footer (`.column-40`, `.column-33`, `.column-25`) | Milligram |
 | Estilo oscuro del footer y franja en zigzag | CSS propio |
+| Animaciones del menú y de los servicios | Anime.js + JS propio |
 
 ## Identidad visual
 
@@ -63,8 +64,20 @@ Concepto: **petroglifo minimalista**. Líneas simples como grabadas en piedra, c
 
 ## Animaciones
 
-Se usa **Anime.js v4** (por CDN) como motor de animación. Las animaciones en el menú y en los servicios se documentarán al integrarlas.
-Anime.js también se usa en la transición del panel de lugares, en la entrada escalonada de la galería al filtrar y en el visor de fotos.
+## Animaciones
+
+Se usa **Anime.js v4** (por CDN) como motor de animación. Las animaciones complementan la interfaz sin reemplazar el trabajo del framework y se desactivan si el usuario tiene activado "reducir movimiento" en su sistema.
+
+**Menú / header (al cargar y al interactuar)**
+- El sol del logo se dibuja trazo a trazo (`svg.createDrawable`).
+- El nombre, los enlaces y el botón "Reservar ahora" entran de forma escalonada.
+- En móvil, los enlaces entran escalonados cada vez que se abre el menú.
+
+**Servicios (al entrar en pantalla)**
+- Las cuatro tarjetas aparecen escalonadas al llegar a la sección (`IntersectionObserver` + `animate` + `stagger`).
+- El glifo de cada servicio se dibuja solo y se vuelve a dibujar al pasar el cursor sobre la tarjeta.
+
+**Otras secciones:** transición del panel de lugares del mapa, entrada escalonada de la galería al filtrar, visor de fotos y mensaje de confirmación del formulario.
 
 ## Librerías externas
 
@@ -104,7 +117,7 @@ No requiere instalación ni backend. Abre `index.html` en el navegador o usa una
 - [x] Experiencia: mapa y galería
 - [x] Formulario de reserva
 - [x] Footer
-- [ ] Animaciones con Anime.js en menú y servicios
+- [x] Animaciones con Anime.js en menú y servicios
 - [ ] Ajustes de responsive y accesibilidad
 
 ---
