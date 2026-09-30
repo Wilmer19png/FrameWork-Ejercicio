@@ -838,7 +838,7 @@ textarea:focus {
   font-size: 1.6rem;
 }
 
-.site-footer h4 {
+.site-footer h3 {
   margin-bottom: .8rem;
   color: var(--ocre);
   font-family: var(--fuente-texto);
@@ -880,4 +880,107 @@ textarea:focus {
 .anim .menu-cta,
 .anim .row-servicios .column {
   opacity: 0;
+}
+/* ===== Accesibilidad ===== */
+
+/* Enlace para saltar al contenido: aparece solo al recibir foco */
+.saltar {
+  position: absolute;
+  top: -10rem;
+  left: 1.6rem;
+  z-index: 200;
+  padding: 1rem 1.6rem;
+  color: var(--hueso);
+  font-weight: 700;
+  background-color: var(--carbon);
+  border-radius: .6rem;
+}
+.saltar:focus {
+  top: 1.2rem;
+  color: var(--hueso);
+}
+
+/* Foco visible con teclado (Milligram lo quita en botones) */
+a:focus-visible,
+button:focus-visible,
+.button:focus-visible {
+  outline: .3rem solid var(--rojo-oxido);
+  outline-offset: .3rem;
+}
+.site-footer a:focus-visible,
+.visor-boton:focus-visible {
+  outline-color: var(--ocre);
+}
+
+/* Áreas táctiles de al menos 44 px */
+.button,
+.reserva-form button {
+  height: 4.4rem;
+  line-height: 4.4rem;
+}
+.lugar-chip {
+  min-height: 4.4rem;
+}
+.footer-enlaces a {
+  display: inline-block;
+  padding: .6rem 0;
+}
+
+/* ===== Responsive ===== */
+.hero {
+  min-height: 100svh;   /* respeta la barra del navegador en celulares; si no lo soporta, queda 100vh */
+}
+
+/* Tablet y menor: el hero, el mapa y el footer se apilan */
+@media (max-width: 900px) {
+  .hero .row,
+  .row-experiencia,
+  .site-footer .row {
+    flex-wrap: wrap;
+  }
+  .hero .row .column.column-60,
+  .hero .row .column.column-40,
+  .row-experiencia .column.column-60,
+  .row-experiencia .column.column-40,
+  .site-footer .row .column.column-40 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .site-footer .row .column.column-33,
+  .site-footer .row .column.column-25 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .hero-visual {
+    max-width: 48rem;
+    margin: 2rem auto 0;
+  }
+  .menu li a {
+    padding: 1rem 0;
+  }
+}
+
+/* Móvil */
+@media (max-width: 40rem) {
+  .hero {
+    padding: 11rem 0 12rem;
+  }
+  .hero-glifos {
+    max-height: 26rem;
+  }
+  .hero-texto .button {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+  .experiencia,
+  .servicios,
+  .reserva {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .galeria-bloque {
+    margin-top: 5rem;
+  }
 }

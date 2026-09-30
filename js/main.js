@@ -23,9 +23,17 @@ menu.querySelectorAll('a').forEach((enlace) => {
   enlace.addEventListener('click', () => abrirCerrarMenu(false));
 });
 
-// Cierra el menú con la tecla Escape
+// Cierra el menú con Escape y devuelve el foco al botón
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') abrirCerrarMenu(false);
+  if (e.key === 'Escape' && menu.classList.contains('abierto')) {
+    abrirCerrarMenu(false);
+    botonMenu.focus();
+  }
+});
+
+// Si la ventana pasa a escritorio, el menú móvil se cierra
+window.matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
+  if (e.matches) abrirCerrarMenu(false);
 });
 
 // Fondo sólido del header al bajar

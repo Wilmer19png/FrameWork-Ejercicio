@@ -106,6 +106,21 @@ casa-nativa/
 No requiere instalación ni backend. Abre `index.html` en el navegador o usa una extensión como Live Preview de Visual Studio Code. Necesita conexión a internet para cargar las librerías y las fuentes desde CDN.
 > El formulario de reserva no tiene backend: valida los datos en el navegador y muestra una confirmación, pero no se envía ninguna información.
 
+## Responsive y accesibilidad
+
+**Responsive**
+- Grid de Milligram (`.row` y `.column-*`) que se apila solo en pantallas pequeñas, con ajustes propios para tablet (hasta 900 px) y móvil (hasta 640 px).
+- Menú tipo hamburguesa en pantallas de hasta 900 px.
+- Probado en anchos de 320, 375, 768, 1024 y 1440 px.
+
+**Accesibilidad**
+- Enlace "Saltar al contenido", estructura con `header`, `main` y `footer` y jerarquía de encabezados ordenada.
+- Foco visible en enlaces y botones, y uso completo con teclado (menú, filtros, visor con `Esc` y flechas).
+- Formulario con etiquetas asociadas, mensajes de error en texto y `aria-invalid`.
+- Textos alternativos en las fotos y símbolos decorativos ocultos a los lectores de pantalla.
+- Animaciones y parallax desactivados con `prefers-reduced-motion`.
+- Áreas táctiles de al menos 44 px en botones.
+
 ## Estado del proyecto
 
 - [x] Estructura base y Milligram integrado
@@ -118,7 +133,7 @@ No requiere instalación ni backend. Abre `index.html` en el navegador o usa una
 - [x] Formulario de reserva
 - [x] Footer
 - [x] Animaciones con Anime.js en menú y servicios
-- [ ] Ajustes de responsive y accesibilidad
+- [x] Ajustes de responsive y accesibilidad
 
 ---
 © 2026 Casa Nativa. Proyecto académico.
