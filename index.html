@@ -188,6 +188,72 @@
       </div>
     </div>
   </section>
+    <section class="reserva" id="reserva">
+    <div class="container">
+
+      <div class="servicios-encabezado reserva-encabezado">
+        <h2>Planea tu próxima escapada</h2>
+        <svg class="divisor" viewBox="0 0 120 16" aria-hidden="true">
+          <path d="M0 8l10-6l10 6l10-6l10 6l10-6l10 6l10-6l10 6l10-6l10 6l10-6l10 6"/>
+        </svg>
+        <p>Cuéntanos cuándo quieres visitarnos y nos pondremos en contacto contigo para confirmar disponibilidad.</p>
+      </div>
+
+      <form id="form-reserva" class="reserva-form" novalidate>
+        <p class="nota-campos">Los campos marcados con * son obligatorios.</p>
+
+        <div class="row">
+          <div class="column column-50">
+            <label for="nombre" class="obligatorio">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" autocomplete="name" aria-describedby="error-nombre" required>
+            <small class="error-campo" id="error-nombre"></small>
+          </div>
+          <div class="column column-50">
+            <label for="correo" class="obligatorio">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" autocomplete="email" aria-describedby="error-correo" required>
+            <small class="error-campo" id="error-correo"></small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column column-50">
+            <label for="telefono" class="obligatorio">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" autocomplete="tel" aria-describedby="error-telefono" required>
+            <small class="error-campo" id="error-telefono"></small>
+          </div>
+          <div class="column column-50">
+            <label for="huespedes" class="obligatorio">Número de huéspedes</label>
+            <input type="number" id="huespedes" name="huespedes" min="1" max="10" value="2" inputmode="numeric" aria-describedby="error-huespedes" required>
+            <small class="error-campo" id="error-huespedes"></small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column column-50">
+            <label for="llegada" class="obligatorio">Fecha de llegada</label>
+            <input type="date" id="llegada" name="llegada" aria-describedby="error-llegada" required>
+            <small class="error-campo" id="error-llegada"></small>
+          </div>
+          <div class="column column-50">
+            <label for="salida" class="obligatorio">Fecha de salida</label>
+            <input type="date" id="salida" name="salida" aria-describedby="error-salida" required>
+            <small class="error-campo" id="error-salida"></small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <label for="mensaje">Mensaje o solicitud especial</label>
+            <textarea id="mensaje" name="mensaje" rows="5"></textarea>
+          </div>
+        </div>
+
+        <button class="button" type="submit">Enviar solicitud</button>
+        <p id="reserva-exito" class="reserva-exito" role="status" aria-live="polite" hidden></p>
+      </form>
+
+    </div>
+  </section>
     <dialog id="visor" class="visor" aria-label="Foto ampliada">
     <button class="visor-boton visor-cerrar" type="button" aria-label="Cerrar">&times;</button>
     <button class="visor-boton visor-prev" type="button" aria-label="Foto anterior">&#8249;</button>

@@ -2,8 +2,8 @@
 
 Landing page responsive de **Casa Nativa**, una casa de hospedaje rural ubicada en Pereira, Risaralda. Proyecto académico del Taller de exploración de frameworks CSS (Aplicaciones móviles y web · Diseño Crossmedia).
 
-**Autor:** [Tu nombre completo]
-**Repositorio:** [enlace de tu repositorio en GitHub]
+**Autor:** Wilmer Alejandro Buritica Alvira - Con ayuda de CLAUDE
+**Repositorio:** (https://github.com/Wilmer19png/FrameWork-Ejercicio.git)
 
 ## Framework asignado
 
@@ -19,7 +19,7 @@ Landing page responsive de **Casa Nativa**, una casa de hospedaje rural ubicada 
 **Tres componentes o utilidades de Milligram usados:**
 1. **Grid:** `.container`, `.row`, `.column-60` y `.column-40` en el hero.
 2. **Botones:** `.button` y `.button-outline` en la navegación y el hero.
-3. **Estilos base de tipografía y listas:** encabezados, párrafos y listas del header y del hero.
+3. **Formularios:** label, input (texto, correo, teléfono, fecha, número) y textarea con los estilos base de Milligram, personalizados en color.
 
 ### Qué es de Milligram y qué es propio
 
@@ -40,6 +40,9 @@ Milligram no incluye barra de navegación, tarjetas, modales ni componentes con 
 | Mapa, marcadores y panel de lugares | Leaflet + JS y CSS propios |
 | Cuadrícula de la galería | CSS Grid propio (Milligram no la cubre) |
 | Filtros por categoría y visor ampliado | JS propio con el elemento `<dialog>` |
+| Distribución del formulario (`.row` y `.column-50`) | Milligram |
+| Campos del formulario (`label`, `input`, `textarea`) y botón | Milligram (colores personalizados) |
+| Validación en español y fechas coherentes | JS propio |
 
 ## Identidad visual
 
@@ -86,6 +89,7 @@ casa-nativa/
 ## Cómo ejecutarlo
 
 No requiere instalación ni backend. Abre `index.html` en el navegador o usa una extensión como Live Preview de Visual Studio Code. Necesita conexión a internet para cargar las librerías y las fuentes desde CDN.
+> El formulario de reserva no tiene backend: valida los datos en el navegador y muestra una confirmación, pero no se envía ninguna información.
 
 ## Estado del proyecto
 
@@ -96,7 +100,7 @@ No requiere instalación ni backend. Abre `index.html` en el navegador o usa una
 - [x] Hero con parallax
 - [x] Servicios con tarjetas
 - [x] Experiencia: mapa y galería
-- [ ] Formulario de reserva
+- [x] Formulario de reserva
 - [ ] Footer
 - [ ] Animaciones con Anime.js en menú y servicios
 - [ ] Ajustes de responsive y accesibilidad

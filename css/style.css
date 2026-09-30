@@ -709,3 +709,86 @@ body:has(dialog[open]) {
     gap: 1rem;
   }
 }
+
+/* ===== Reserva ===== */
+.reserva {
+  padding: 9rem 0 10rem;
+  background-color: rgba(230, 213, 186, .7);
+}
+
+.reserva-form {
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 4rem 3.2rem 3.2rem;
+  background-color: #FBF5EA;
+  border: .2rem solid var(--carbon);
+  border-radius: 1.2rem;
+  box-shadow: .8rem .8rem 0 var(--ocre);
+}
+.nota-campos {
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+}
+
+/* Campos: reemplazan el gris y el morado de Milligram */
+input[type='date'],
+input[type='email'],
+input[type='number'],
+input[type='tel'],
+input[type='text'],
+input:not([type]),
+textarea {
+  background-color: var(--hueso);
+  border: .2rem solid var(--carbon);
+  border-radius: .6rem;
+}
+input[type='date']:focus,
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='tel']:focus,
+input[type='text']:focus,
+input:not([type]):focus,
+textarea:focus {
+  border-color: var(--rojo-oxido);
+  box-shadow: 0 0 0 .3rem rgba(168, 68, 42, .2);
+}
+
+/* Etiquetas y errores */
+.obligatorio::after {
+  content: " *";
+  color: var(--rojo-oxido);
+}
+.error-campo {
+  display: block;
+  min-height: 1.8rem;
+  margin: -1rem 0 1.2rem;
+  color: #8C1D18;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.reserva-form .invalido,
+.reserva-form .invalido:focus {
+  border-color: #8C1D18;
+}
+
+/* Botón y confirmación */
+.reserva-form .button {
+  margin-top: .8rem;
+}
+.reserva-exito {
+  margin: 2rem 0 0;
+  padding: 1.6rem 2rem;
+  font-weight: 600;
+  background-color: rgba(95, 107, 58, .15);
+  border: .2rem solid var(--musgo);
+  border-radius: .8rem;
+}
+
+@media (max-width: 40rem) {
+  .reserva-form {
+    padding: 3rem 2rem 2.4rem;
+  }
+  .reserva-form .button {
+    width: 100%;
+  }
+}

@@ -315,3 +315,108 @@ if (galeria && filtrosGaleria && visor) {
 
   filtrar('Todas', false);
 }
+// ===== Reserva: formulario =====
+const formReserva = document.querySelector('#form-reserva');
+
+if (formReserva) {
+  const campoLlegada = formReserva.querySelector('#llegada');
+  const campoSalida = formReserva.querySelector('#salida');
+  const mensajeExito = formReserva.querySelector('#reserva-exito');
+
+  // Fecha local como AAAA-MM-DD (toISOString desfasa por zona horaria)
+  const aTexto = (fecha) => {
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    return `${fecha.getFullYear()}-${mes}-${dia}`;
+  };
+  const hoyTexto = aTexto(new Date());
+  campoLlegada.min = hoyTexto;
+  campoSalida.min = hoyTexto;
+
+  // La salida solo puede ser al día siguiente de la llegada o después
+  campoLlegada.addEventListener('change', () => {
+    if (!campoLlegada.value) {
+      campoSalida.min = hoyTexto;
+      return;
+    }
+    const siguiente = new Date(`${campoLlegada.value}T00:00:00`);
+    siguiente.setDate(siguiente.getDate() + 1);
+    campoSalida.min = aTexto(siguiente);
+    if (campoSalida.value && campoSalida.value <= campoLlegada.value) {
+      campoSalida.value = '';
+    }
+  });
+
+  // Reglas por campo: devuelven el mensaje de error, o '' si está bien
+  const reglas = {
+    nombre: (v) => (v.trim().length < 3 ? 'Escribe tu nombre completo.' : ''),
+    correo: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim())
+      ? '' : 'Escribe un correo válido, por ejemplo nombre@correo.com.'),
+    telefono: (v) => {
+      const digitos = v.replace(/\D/g, '');
+      const valido = /^[+\d\s()-]+$/.test(v) && digitos.length >= 7 && digitos.length <= 15;
+      return valido ? '' : 'Escribe un teléfono válido (entre 7 y 15 dígitos).';
+    },
+    huespedes: (v) => {
+      const n = Number(v);
+      return Number.isInteger(n) && n >= 1 && n <= 10 ? '' : 'Indica entre 1 y 10 huéspedes.';
+    },
+    llegada: (v) => {
+      if (!v) return 'Elige la fecha de llegada.';
+      return v < hoyTexto ? 'La llegada no puede ser anterior a hoy.' : '';
+    },
+    salida: (v) => {
+      if (!v) return 'Elige la fecha de salida.';
+      if (campoLlegada.value && v <= campoLlegada.value) return 'La salida debe ser posterior a la llegada.';
+      return '';
+    }
+  };
+  const ids = Object.keys(reglas);
+
+  function validarCampo(id) {
+    const campo = formReserva.querySelector(`#${id}`);
+    const error = formReserva.querySelector(`#error-${id}`);
+    const mensaje = reglas[id](campo.value);
+    error.textContent = mensaje;
+    campo.classList.toggle('invalido', Boolean(mensaje));
+    campo.setAttribute('aria-invalid', String(Boolean(mensaje)));
+    return !mensaje;
+  }
+
+  ids.forEach((id) => {
+    const campo = formReserva.querySelector(`#${id}`);
+    campo.addEventListener('blur', () => validarCampo(id));
+    campo.addEventListener('input', () => {
+      if (campo.classList.contains('invalido')) validarCampo(id);
+    });
+  });
+
+  // Al escribir de nuevo, se oculta la confirmación anterior
+  formReserva.addEventListener('input', () => {
+    mensajeExito.hidden = true;
+  });
+
+  formReserva.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const resultados = ids.map(validarCampo);       // valida todos para mostrar todos los errores
+    const primerError = ids.find((id, i) => !resultados[i]);
+    if (primerError) {
+      formReserva.querySelector(`#${primerError}`).focus();
+      return;
+    }
+
+    const primerNombre = formReserva.querySelector('#nombre').value.trim().split(' ')[0];
+    mensajeExito.textContent =
+      `¡Gracias, ${primerNombre}! Tu solicitud quedó registrada en esta demostración. ` +
+      'Como es un proyecto académico, no se envía ningún dato.';
+    mensajeExito.hidden = false;
+
+    formReserva.reset();
+    campoSalida.min = hoyTexto;
+
+    if (!sinMovimiento.matches) {
+      animate(mensajeExito, { opacity: [0, 1], y: [16, 0], duration: 500, ease: 'outQuad' });
+    }
+  });
+}
